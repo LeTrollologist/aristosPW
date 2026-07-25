@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Aristos Property Works provides high-end residential and commercial property maintenance, specializing in technical troubleshooting and system repairs.">
+    <title>Aristos Property Works | Premium Technical Solutions & Maintenance</title>
+    <style>
+        /* CSS VARIABLES FOR LIGHT / DARK THEMING */
+        :root {
+            /* Core Brand Colors */
+            --gold: #C5A059;
+            --slate: #708090;
+            
+            /* Light Theme Variables (Default) */
+            --navy-accent: #00234E;
+            --bg-main: #FFFFFF;
+            --bg-sec: #F8F9FA;
+            --text-main: #333333;
+            --text-headers: #00234E;
+            --card-bg: #FFFFFF;
+            --header-bg: #FFFFFF;
+            --footer-bg: #001530;
+            --form-border: #cccccc;
+            --quote-bg: rgba(255, 255, 255, 0.05);
+        }
+
+        /* DARK THEME OVERRIDES */
+        [data-theme="dark"] {
+            --navy-accent: #0B192C; /* Darker navy for sections */
+            --bg-main: #121212; /* Deep charcoal background */
+            --bg-sec: #1A1A1A; /* Slightly lighter for contrast */
+            --text-main: #E0E0E0; /* Soft white text */
+            --text-headers: #F8F9FA; /* Crisp white headers */
+            --card-bg: #242424; /* Elevated card background */
+            --header-bg: #121212;
+            --footer-bg: #070D14;
+            --form-border: #444444;
+            --quote-bg: rgba(0, 0, 0, 0.3);
+        }
+        
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--text-main);
+            background-color: var(--bg-main);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* HEADER & TOGGLE */
+        header {
+            background-color: var(--header-bg);
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            transition: background-color 0.3s;
+        }
+        
+        .logo-container { width: 220px; }
+        
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 5px;
+            color: var(--text-main);
+            transition: transform 0.2s;
+        }
+        
+        .theme-toggle:hover { transform: scale(1.1); }
+
+        .btn {
+            background-color: var(--gold);
+            color: #00234E; /* Keep text dark on the gold button */
+            padding: 12px 24px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 4px;
+            transition: background 0.3s;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
+        .btn:hover { background-color: #a88748; }
+
+        /* HERO SECTION */
+        .hero {
+            background-color: var(--navy-accent);
+            color: #FFFFFF; /* Always white text on hero */
+            padding: 80px 5%;
+            text-align: center;
+            transition: background-color 0.3s;
+        }
+        .hero h1 { font-size: 3rem; margin-bottom: 20px; color: #FFFFFF; }
+        .hero span { color: var(--gold); }
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 40px auto;
+            color: #E2E8F0;
+        }
+
+        /* TRUSTED BY BANNER */
+        .trusted-banner {
+            background-color: var(--slate);
+            color: #FFFFFF;
+            text-align: center;
+            padding: 20px 5%;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        .trusted-clients {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 10px;
+            font-weight: bold;
+            flex-wrap: wrap;
+            color: #e2e8f0;
+        }
+
+        /* SERVICES SECTION */
+        .services {
+            padding: 60px 5%;
+            background-color: var(--bg-sec);
+            text-align: center;
+            transition: background-color 0.3s;
+        }
+        .services h2 { color: var(--text-headers); font-size: 2.2rem; margin-bottom: 40px; }
+        .service-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+        .service-card {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 8px;
+            width: 300px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            border-top: 5px solid var(--gold);
+            text-align: left;
+            transition: background-color 0.3s;
+        }
+        .service-card h3 { color: var(--text-headers); margin-top: 0; }
+        .service-card p { color: var(--text-main); font-size: 0.95rem; opacity: 0.9; }
+
+        /* FAQ SECTION */
+        .faq-section {
+            padding: 60px 5%;
+            background-color: var(--bg-main);
+            max-width: 800px;
+            margin: 0 auto;
+            transition: background-color 0.3s;
+        }
+        .faq-section h2 { color: var(--text-headers); text-align: center; margin-bottom: 30px; }
+        .faq-item {
+            border-bottom: 1px solid var(--form-border);
+            padding: 15px 0;
+        }
+        .faq-question {
+            font-weight: bold;
+            color: var(--text-headers);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.1rem;
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            color: var(--text-main);
+            padding-top: 0;
+            opacity: 0.9;
+        }
+        .faq-answer p { margin-top: 10px; margin-bottom: 0; }
+
+        /* SMART CONTACT FORM */
+        .contact-section {
+            background-color: var(--navy-accent);
+            color: #FFFFFF;
+            padding: 60px 5%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 50px;
+            transition: background-color 0.3s;
+        }
+        .contact-info { max-width: 400px; }
+        .contact-info h2 { color: var(--gold); }
+        .contact-info p { color: #E2E8F0; }
+        .quote-box {
+            background-color: var(--quote-bg);
+            padding: 20px;
+            border-left: 5px solid var(--gold);
+            margin-top: 20px;
+            font-style: italic;
+        }
+        .smart-form {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 8px;
+            width: 100%;
+            max-width: 400px;
+            color: var(--text-main);
+            transition: background-color 0.3s;
+        }
+        .smart-form h3 { margin-top: 0; color: var(--text-headers); }
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; font-size: 0.9rem; font-weight: bold; margin-bottom: 5px; color: var(--text-main); opacity: 0.9;}
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            border: 1px solid var(--form-border);
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-family: inherit;
+        }
+        .smart-form .btn { width: 100%; margin-top: 10px; }
+
+        /* FOOTER */
+        footer {
+            background-color: var(--footer-bg);
+            color: var(--slate);
+            text-align: center;
+            padding: 30px 5%;
+            font-size: 0.9rem;
+            transition: background-color 0.3s;
+        }
+        .legal-disclaimer { font-size: 0.75rem; margin-top: 20px; opacity: 0.6; }
+
+        /* FLOATING CALL BUTTON */
+        .fab-call {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--gold);
+            color: #00234E;
+            padding: 15px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: transform 0.2s;
+        }
+        .fab-call:hover { transform: scale(1.05); }
+
+        /* MOBILE ADJUSTMENTS */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .trusted-clients { gap: 15px; font-size: 0.85rem; }
+            .fab-call { bottom: 20px; right: 20px; font-size: 0.9rem; padding: 12px 16px; }
+            .header-actions { gap: 10px; }
+            .btn { padding: 10px 15px; font-size: 0.9rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- FLOATING CALL BUTTON -->
+    <a href="tel:3308831881‬" class="fab-call">
+        📞 Call for Dispatch
+    </a>
+
+    <!-- HEADER -->
+    <header>
+        <div class="logo-container">
+            <!-- Adaptive SVG Logo: fill="var(--text-headers)" makes ARISTOS change from Navy to White dynamically -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 250" width="100%" height="100%">
+                <polygon points="120,50 150,50 90,170 50,170" fill="#00234E" />
+                <polygon points="120,50 150,50 210,170 170,170" fill="#708090" />
+                <polygon points="75,125 185,105 195,125 85,145" fill="#C5A059" />
+                <text x="240" y="115" font-family="Arial, sans-serif" font-size="72" font-weight="900" fill="var(--text-headers)" letter-spacing="4">ARISTOS</text>
+                <text x="245" y="155" font-family="Arial, sans-serif" font-size="24" font-weight="600" fill="#708090" letter-spacing="8">PROPERTY WORKS</text>
+            </svg>
+        </div>
+        <div class="header-actions">
+            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Dark Mode">🌙</button>
+            <a href="#contact" class="btn">Request Service</a>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <h1>Precision Troubleshooting & <br><span>Technical Solutions</span></h1>
+        <p>Premium residential and commercial property maintenance. When you have a complex problem that others can't solve, you call Aristos. Fast diagnostics, honest pricing, and elite craftsmanship.</p>
+        <a href="#contact" class="btn">Get a Free Estimate</a>
+    </section>
+
+    <!-- TRUSTED BY BANNER -->
+    <div class="trusted-banner">
+        <span>Proudly Trusted By Local Business Leaders</span>
+        <div class="trusted-clients">
+            <span>◆ FIRST STEP RECOVERY</span>
+            <span>◆ PREMIER DINING VENUES</span>
+            <span>◆ REGIONAL REHABILITATION CENTERS</span>
+        </div>
+    </div>
+
+    <!-- SERVICES -->
+    <section class="services">
+        <h2>Expert Property Services</h2>
+        <div class="service-grid">
+            <div class="service-card">
+                <h3>Technical Diagnostics</h3>
+                <p>Experiencing power loss, faulty circuits, or systemic issues? We specialize in rapid diagnostics to locate the root cause and resolve it efficiently, saving you thousands on unnecessary overhauls.</p>
+            </div>
+            <div class="service-card">
+                <h3>Commercial Upkeep</h3>
+                <p>From fine dining restaurants to corporate offices, we keep your business running seamlessly. We handle critical property maintenance and operational repairs with zero downtime for your business.</p>
+            </div>
+            <div class="service-card">
+                <h3>System Updates</h3>
+                <p>Modernize your space. We provide professional component swap-outs, lighting fixture installations, aesthetic faceplate updates, and general hardware maintenance to keep your property safe.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEO FAQ SECTION -->
+    <section class="faq-section">
+        <h2>Frequently Asked Questions</h2>
+        
+        <div class="faq-item">
+            <div class="faq-question">Why are half the lights or outlets in my business failing? <span style="color:var(--gold)">+</span></div>
+            <div class="faq-answer"><p>This is often a localized systemic issue. Instead of paying for a complete wire overhaul, our diagnostic team can usually isolate the exact failure point and restore function rapidly, minimizing your downtime and costs.</p></div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">Do I need a complete systemic overhaul, or just an update? <span style="color:var(--gold)">+</span></div>
+            <div class="faq-answer"><p>Many larger contracting agencies will default to bidding massive overhauls. We specialize in isolating the specific components that have failed. We frequently solve problems for a fraction of what major agencies quote.</p></div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">How quickly can Aristos respond to property maintenance issues? <span style="color:var(--gold)">+</span></div>
+            <div class="faq-answer"><p>We understand that in commercial environments, downtime equals lost revenue. We prioritize urgent troubleshooting calls to get your lights back on and your business fully operational as safely and quickly as possible.</p></div>
+        </div>
+    </section>
+
+    <!-- CONTACT / SMART FORM -->
+    <section id="contact" class="contact-section">
+        <div class="contact-info">
+            <h2>Ready to resolve your property issues?</h2>
+            <p>Skip the bloated contractor overhead. Reach out directly for fast, precise property maintenance and technical troubleshooting.</p>
+            <p style="font-size: 1.5rem; font-weight: bold; margin-top: 20px; color: var(--gold);">📞 (330) 883-1881‬</p>
+            <p>✉️ #</p>
+            
+            <div class="quote-box">
+                "Aristos came out when a massive contractor quoted us over $5,000 for repairs. They pinpointed the issue, resolved the power loss in minutes, and charged us less than $400." <br><br>
+                <strong style="color: var(--gold);">— Local Commercial Client</strong>
+            </div>
+        </div>
+
+        <!-- THE SMART FORM -->
+        <div class="smart-form">
+            <h3>Request an Estimate</h3>
+            <form action="#" method="POST">
+                <div class="form-group">
+                    <label for="name">Name / Business Name</label>
+                    <input type="text" id="name" required placeholder="John Doe">
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" required placeholder="(555) 555-5555">
+                </div>
+                <div class="form-group">
+                    <label for="service-type">Type of Service Needed</label>
+                    <select id="service-type" required>
+                        <option value="">-- Select a Category --</option>
+                        <option value="diagnostics">System Diagnostics / Troubleshooting</option>
+                        <option value="fixtures">Fixture Install / Component Swap-out</option>
+                        <option value="commercial">Commercial Property Upkeep</option>
+                        <option value="general">General Handyman / Repairs</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="details">Project Details</label>
+                    <textarea id="details" rows="4" placeholder="Briefly describe what you need help with..."></textarea>
+                </div>
+                <button type="submit" class="btn">Submit Request</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 Aristos Property Works. All Rights Reserved.</p>
+        <div class="legal-disclaimer">
+            <p>Aristos Property Works operates as a specialized division under #, providing property maintenance, technical repairs, and general handyman services in compliance with local municipal guidelines. Work requiring municipal electrical permitting is referred out to our network of licensed trade partners.</p>
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE SCRIPTS -->
+    <script>
+        // 1. DARK MODE TOGGLE LOGIC
+        const toggleBtn = document.getElementById('theme-toggle');
+        const body = document.documentElement; // Targets the <html> tag
+
+        // Check local storage or system preference on load
+        const savedTheme = localStorage.getItem('theme');
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const currentTheme = savedTheme ? savedTheme : (systemPrefersDark ? 'dark' : 'light');
+
+        // Apply initial theme
+        body.setAttribute('data-theme', currentTheme);
+        toggleBtn.innerText = currentTheme === 'dark' ? '☀️' : '🌙';
+
+        // Listen for clicks on the toggle button
+        toggleBtn.addEventListener('click', () => {
+            const newTheme = body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+            body.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            toggleBtn.innerText = newTheme === 'dark' ? '☀️' : '🌙';
+        });
+
+        // 2. INTERACTIVE FAQ LOGIC
+        document.querySelectorAll('.faq-question').forEach(item => {
+            item.addEventListener('click', event => {
+                const answer = item.nextElementSibling;
+                const sign = item.querySelector('span');
+                
+                if (answer.style.maxHeight) {
+                    answer.style.maxHeight = null;
+                    sign.innerText = '+';
+                } else {
+                    // Close other open answers
+                    document.querySelectorAll('.faq-answer').forEach(ans => ans.style.maxHeight = null);
+                    document.querySelectorAll('.faq-question span').forEach(s => s.innerText = '+');
+                    
+                    answer.style.maxHeight = answer.scrollHeight + "px";
+                    sign.innerText = '-';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
