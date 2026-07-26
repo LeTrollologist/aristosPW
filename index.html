@@ -80,30 +80,6 @@
             overflow-x: hidden;
         }
 
-        /* CUSTOM CURSOR */
-        .custom-cursor {
-            display: none;
-            position: fixed;
-            top: 0; left: 0;
-            width: 30px; height: 30px;
-            border: 2px solid var(--gold);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            pointer-events: none;
-            z-index: 9999;
-            transition: width 0.3s, height 0.3s, background-color 0.3s, border-color 0.3s;
-            mix-blend-mode: difference;
-        }
-        @media (pointer: fine) {
-            body, a, button, input, select, textarea, .slider-input, .faq-question { cursor: none !important; }
-            .custom-cursor { display: block; }
-        }
-        .custom-cursor.hover {
-            width: 50px; height: 50px;
-            background-color: rgba(197, 160, 89, 0.2);
-            border-color: rgba(197, 160, 89, 0.5);
-        }
-
         /* PRELOADER */
         #preloader {
             position: fixed;
@@ -515,9 +491,6 @@
 </head>
 <body>
 
-    <!-- CUSTOM CURSOR -->
-    <div class="custom-cursor" id="custom-cursor"></div>
-
     <!-- PRELOADER -->
     <div id="preloader">
         <svg class="preloader-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
@@ -852,33 +825,6 @@
                 setTimeout(() => preloader.remove(), 800);
             }
         }, 3000);
-
-        // 6. CUSTOM CURSOR
-        const cursor = document.getElementById('custom-cursor');
-        if (cursor && window.matchMedia("(pointer: fine)").matches) {
-            let mouseX = 0, mouseY = 0;
-            let cursorX = 0, cursorY = 0;
-            
-            document.addEventListener('mousemove', (e) => {
-                mouseX = e.clientX;
-                mouseY = e.clientY;
-            });
-            
-            const renderCursor = () => {
-                cursorX += (mouseX - cursorX) * 0.2; // Smooth tracking interpolation
-                cursorY += (mouseY - cursorY) * 0.2;
-                cursor.style.transform = `translate(${cursorX}px, ${cursorY}px) translate(-50%, -50%)`;
-                requestAnimationFrame(renderCursor);
-            };
-            requestAnimationFrame(renderCursor);
-
-            // Expand cursor on interactive elements
-            const hoverElements = document.querySelectorAll('a, button, input, select, textarea, .slider-input, .faq-question');
-            hoverElements.forEach(el => {
-                el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
-                el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
-            });
-        }
 
         // 7. TESTIMONIAL CAROUSEL
         const slides = document.querySelectorAll('.testimonial-slide');
