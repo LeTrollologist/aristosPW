@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Aristos Property Works provides high-end residential and commercial property maintenance, specializing in technical troubleshooting and system repairs.">
+    <title>Privacy | Aristos Property Works</title>
+    
+    <!-- Premium Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <!-- INVISIBLE LOCAL SEO SCHEMA (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HomeAndConstructionBusiness",
+      "name": "Aristos Property Works",
+      "image": "https://www.aristospropertyworks.com/logo.jpg",
+      "telephone": "+13308831881",
+      "email": "service@aristospropertyworks.com",
+      "url": "https://www.aristospropertyworks.com",
+      "priceRange": "$$",
+      "description": "High-end residential and commercial property maintenance, specializing in precise technical troubleshooting, system diagnostics, and cosmetic fixture updates.",
+      "areaServed": [
+        {"@type": "City", "name": "Youngstown"},
+        {"@type": "City", "name": "Warren"},
+        {"@type": "City", "name": "Boardman"},
+        {"@type": "City", "name": "Champion Heights"},
+        {"@type": "City", "name": "Niles"},
+        {"@type": "City", "name": "Canfield"}
+      ]
+    }
+    </script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- PRELOADER -->
+    <!-- PRELOADER REMOVED -->
+        <!-- xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+            <polygon points="50,10 90,90 10,90" fill="none" stroke="#C5A059" stroke-width="4"/>
+            <polygon points="50,30 75,80 25,80" fill="#C5A059" />
+        -->
+    </div>
+
+    <!-- FLOATING CALL BUTTON -->
+    <a href="tel:3308831881‬" class="fab-call">
+        📞 Call for Dispatch
+    </a>
+
+    <!-- HEADER -->
+    <header>
+        <div class="logo-container">
+            <!-- Adaptive SVG Logo: fill="var(--text-headers)" makes ARISTOS change from Navy to White dynamically -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 250" width="100%" height="100%">
+                <polygon points="120,50 150,50 90,170 50,170" fill="#00234E" />
+                <polygon points="120,50 150,50 210,170 170,170" fill="#708090" />
+                <polygon points="75,125 185,105 195,125 85,145" fill="#C5A059" />
+                <text x="240" y="115" font-family="Arial, sans-serif" font-size="72" font-weight="900" fill="var(--text-headers)" letter-spacing="4">ARISTOS</text>
+                <text x="245" y="155" font-family="Arial, sans-serif" font-size="24" font-weight="600" fill="#708090" letter-spacing="8">PROPERTY WORKS</text>
+            -->
+        </div>
+        <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+            <div class="header-actions">
+            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Dark Mode">🌙</button>
+            <a href="#contact" class="btn">Request Service</a>
+        </div>
+    </header>
+    <section style="padding: 150px 20px 100px 20px; max-width: 800px; margin: 0 auto; min-height: 70vh;">
+        <h2>Privacy Policy</h2>
+        <p style="margin-top: 20px;"><strong>Last Updated: July 2026</strong></p>
+        <p style="margin-top: 20px;">At Aristos Property Works, we take your privacy seriously. This Privacy Policy outlines how we collect, use, and protect your personal information when you use our website or request our services.</p>
+        
+        <h3 style="margin-top: 30px;">1. Information We Collect</h3>
+        <p>When you submit a request through our contact form, we collect your Name, Phone Number, Service Requirements, and any other details you provide.</p>
+        
+        <h3 style="margin-top: 30px;">2. How We Use Your Information</h3>
+        <p>We use this information solely to respond to your service request, provide estimates, and dispatch our technicians to your location. We do not sell or rent your personal data to third parties.</p>
+        
+        <h3 style="margin-top: 30px;">3. Data Security</h3>
+        <p>We implement standard security measures to protect your submitted data. However, no internet transmission is 100% secure.</p>
+    </section>
+    <footer>
+        <p>&copy; 2026 Aristos Property Works. All Rights Reserved.</p>
+        <div class="footer-links">
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="terms.html">Terms of Service</a>
+        </div>
+        <div class="legal-disclaimer">
+            <p>Aristos Property Works operates as a specialized division under #, providing property maintenance, technical repairs, and general handyman services in compliance with local municipal guidelines. Work requiring municipal electrical permitting is referred out to our network of licensed trade partners.</p>
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE SCRIPTS -->
+    <script>
+        // 1. DARK MODE TOGGLE LOGIC
+        const toggleBtn = document.getElementById('theme-toggle');
+        const body = document.documentElement; // Targets the <html> tag
+
+        // Check local storage or system preference on load
+        const savedTheme = localStorage.getItem('theme');
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const currentTheme = savedTheme ? savedTheme : (systemPrefersDark ? 'dark' : 'light');
+
+        // Apply initial theme
+        body.setAttribute('data-theme', currentTheme);
+        toggleBtn.innerText = currentTheme === 'dark' ? '☀️' : '🌙';
+
+        // Listen for clicks on the toggle button
+        toggleBtn.addEventListener('click', () => {
+            const newTheme = body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+            body.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            toggleBtn.innerText = newTheme === 'dark' ? '☀️' : '🌙';
+        });
+
+        // 2. INTERACTIVE FAQ LOGIC
+        document.querySelectorAll('.faq-question').forEach(item => {
+            item.addEventListener('click', event => {
+                const answer = item.nextElementSibling;
+                const sign = item.querySelector('span');
+                
+                if (answer.style.maxHeight) {
+                    answer.style.maxHeight = null;
+                    sign.innerText = '+';
+                } else {
+                    // Close other open answers
+                    document.querySelectorAll('.faq-answer').forEach(ans => ans.style.maxHeight = null);
+                    document.querySelectorAll('.faq-question span').forEach(s => s.innerText = '+');
+                    
+                    answer.style.maxHeight = answer.scrollHeight + "px";
+                    sign.innerText = '-';
+                }
+            });
+        });
+
+        // 3. BEFORE/AFTER SLIDER LOGIC
+        const sliderInput = document.getElementById('slider-input');
+        const imgAfter = document.getElementById('img-after');
+        const sliderLine = document.getElementById('slider-line');
+
+        if (sliderInput && imgAfter && sliderLine) {
+            sliderInput.addEventListener('input', (e) => {
+                const sliderValue = e.target.value;
+                imgAfter.style.clipPath = `polygon(0 0, ${sliderValue}% 0, ${sliderValue}% 100%, 0 100%)`;
+                sliderLine.style.left = `${sliderValue}%`;
+            });
+        }
+
+        // 4. INTERSECTION OBSERVER FOR SCROLL ANIMATIONS
+        const revealElements = document.querySelectorAll(
+            '.hero h1, .hero p, .hero .btn, .trusted-banner, .services h2, .service-card, .process-section h2, .step, .portfolio h2, .slider-container, .area-wrapper, .faq-item, .contact-info, .smart-form'
+        );
+
+        // Add stagger delays based on element types
+        document.querySelectorAll('.service-card').forEach((el, index) => { el.classList.add(`delay-${index + 1}`); });
+        document.querySelectorAll('.step').forEach((el, index) => { el.classList.add(`delay-${index + 1}`); });
+        document.querySelectorAll('.faq-item').forEach((el, index) => { el.classList.add(`delay-${(index % 3) + 1}`); });
+
+        revealElements.forEach((el) => {
+            el.classList.add('reveal');
+        });
+
+        const revealOptions = {
+            threshold: 0.15,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const revealOnScroll = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) {
+                    return;
+                } else {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, revealOptions);
+
+        revealElements.forEach(el => {
+            revealOnScroll.observe(el);
+        });
+
+        // 5. PRELOADER LOGIC
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            if (preloader) {
+                setTimeout(() => {
+                    preloader.style.opacity = '0';
+                    preloader.style.transform = 'translateY(-100%)';
+                    setTimeout(() => preloader.remove(), 800);
+                }, 500); // 0.5s initial wait
+            }
+        });
+        
+        // Preloader Failsafe if load takes too long
+        setTimeout(() => {
+            const preloader = document.getElementById('preloader');
+            if (preloader) {
+                preloader.style.opacity = '0';
+                setTimeout(() => preloader.remove(), 800);
+            }
+        }, 3000);
+
+        // 7. TESTIMONIAL CAROUSEL
+        const slides = document.querySelectorAll('.testimonial-slide');
+        if (slides.length > 0) {
+            let currentSlide = 0;
+            setInterval(() => {
+                slides[currentSlide].classList.remove('active');
+                currentSlide = (currentSlide + 1) % slides.length;
+                slides[currentSlide].classList.add('active');
+            }, 5000);
+        }
+    </script>
+</body>
+</html>
