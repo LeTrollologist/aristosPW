@@ -5,6 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Aristos Property Works provides high-end residential and commercial property maintenance, specializing in technical troubleshooting and system repairs.">
     <title>Aristos Property Works | Premium Technical Solutions & Maintenance</title>
+    
+    <!-- INVISIBLE LOCAL SEO SCHEMA (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HomeAndConstructionBusiness",
+      "name": "Aristos Property Works",
+      "image": "https://www.aristospropertyworks.com/logo.jpg",
+      "telephone": "+13308831881",
+      "email": "service@aristospropertyworks.com",
+      "url": "https://www.aristospropertyworks.com",
+      "priceRange": "$$",
+      "description": "High-end residential and commercial property maintenance, specializing in precise technical troubleshooting, system diagnostics, and cosmetic fixture updates.",
+      "areaServed": [
+        {"@type": "City", "name": "Youngstown"},
+        {"@type": "City", "name": "Warren"},
+        {"@type": "City", "name": "Boardman"},
+        {"@type": "City", "name": "Champion Heights"},
+        {"@type": "City", "name": "Niles"},
+        {"@type": "City", "name": "Canfield"}
+      ]
+    }
+    </script>
+
     <style>
         /* CSS VARIABLES FOR LIGHT / DARK THEMING */
         :root {
@@ -250,6 +274,57 @@
         }
         .legal-disclaimer { font-size: 0.75rem; margin-top: 20px; opacity: 0.6; }
 
+        /* THE PROCESS TIMELINE */
+        .process-section { background-color: var(--bg-main); padding: 60px 5%; text-align: center; }
+        .timeline { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; max-width: 1000px; margin: 0 auto; }
+        .step { flex: 1; min-width: 250px; padding: 20px; position: relative; }
+        .step-num { 
+            background: var(--gold); color: #00234E; font-size: 1.5rem; font-weight: bold; 
+            width: 50px; height: 50px; line-height: 50px; border-radius: 50%; margin: 0 auto 15px auto; 
+        }
+        .step h3 { color: var(--text-headers); margin: 10px 0; }
+
+        /* INTERACTIVE BEFORE/AFTER SLIDER */
+        .portfolio { background-color: var(--bg-sec); padding: 60px 5%; text-align: center; }
+        .portfolio h2 { color: var(--text-headers); font-size: 2.2rem; margin-bottom: 40px; }
+        .slider-container {
+            position: relative; width: 100%; max-width: 800px; height: 400px; 
+            margin: 0 auto; border-radius: 8px; overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        .img-before, .img-after {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background-size: cover; background-position: center;
+        }
+        .img-before { background-image: url('https://images.unsplash.com/photo-1542013936693-884638332954?q=80&w=800'); }
+        .img-after { background-image: url('https://images.unsplash.com/photo-1560185127-6ed189bf02f4?q=80&w=800'); clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%); }
+        .slider-input {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            opacity: 0; cursor: ew-resize; z-index: 10;
+        }
+        .slider-line {
+            position: absolute; top: 0; left: 50%; width: 4px; height: 100%;
+            background: var(--gold); transform: translateX(-50%); pointer-events: none;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .slider-button {
+            width: 40px; height: 40px; background: var(--gold); border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            color: #00234E; font-weight: bold; font-size: 12px; box-shadow: 0 0 10px rgba(0,0,0,0.5);
+        }
+
+        /* SERVICE AREAS GRID (LOCAL SEO) */
+        .service-areas { background-color: var(--bg-main); padding: 60px 5%; padding-bottom: 20px; text-align: center; }
+        .service-areas h2 { color: var(--text-headers); font-size: 2.2rem; margin-bottom: 40px; }
+        .area-wrapper { max-width: 800px; margin: 0 auto; }
+        .area-wrapper p { margin-bottom: 30px; font-style: italic; opacity: 0.8;}
+        .area-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; }
+        .area-pill {
+            background-color: var(--card-bg); border: 1px solid var(--form-border);
+            padding: 10px 20px; border-radius: 50px; font-weight: bold;
+            color: var(--text-headers); box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
         /* FLOATING CALL BUTTON */
         .fab-call {
             position: fixed;
@@ -273,6 +348,8 @@
         /* MOBILE ADJUSTMENTS */
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.2rem; }
+            .timeline { flex-direction: column; }
+            .slider-container { height: 250px; }
             .trusted-clients { gap: 15px; font-size: 0.85rem; }
             .fab-call { bottom: 20px; right: 20px; font-size: 0.9rem; padding: 12px 16px; }
             .header-actions { gap: 10px; }
@@ -322,6 +399,43 @@
         </div>
     </div>
 
+    <!-- THE PROCESS TIMELINE -->
+    <section class="process-section">
+        <h2>Why We Beat The Big Contractors</h2>
+        <div class="timeline">
+            <div class="step">
+                <div class="step-num">1</div>
+                <h3>Assess</h3>
+                <p>We dispatch rapidly to your location to safely secure the environment and assess the reported failure.</p>
+            </div>
+            <div class="step">
+                <div class="step-num">2</div>
+                <h3>Diagnose</h3>
+                <p>Instead of quoting a massive systemic overhaul, we pinpoint the specific faulty component causing the issue.</p>
+            </div>
+            <div class="step">
+                <div class="step-num">3</div>
+                <h3>Resolve</h3>
+                <p>We perform precise updates and fixture swap-outs to restore function efficiently, saving you thousands.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- VISUAL PROOF SLIDER -->
+    <section class="portfolio">
+        <h2>Commercial Aesthetic Updates</h2>
+        <p style="max-width: 600px; margin: 0 auto 30px auto; opacity: 0.9;">Drag the slider to see how simple, modern hardware swaps can completely transform a commercial space safely and effectively.</p>
+        
+        <div class="slider-container">
+            <div class="img-before"></div>
+            <div class="img-after" id="img-after"></div>
+            <input type="range" min="0" max="100" value="50" class="slider-input" id="slider-input">
+            <div class="slider-line" id="slider-line">
+                <div class="slider-button">↔</div>
+            </div>
+        </div>
+    </section>
+
     <!-- SERVICES -->
     <section class="services">
         <h2>Expert Property Services</h2>
@@ -337,6 +451,22 @@
             <div class="service-card">
                 <h3>System Updates</h3>
                 <p>Modernize your space. We provide professional component swap-outs, lighting fixture installations, aesthetic faceplate updates, and general hardware maintenance to keep your property safe.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICE AREAS GRID (LOCAL SEO) -->
+    <section class="service-areas">
+        <div class="area-wrapper">
+            <h2>Areas We Serve</h2>
+            <p>Providing rapid-response property maintenance across Mahoning and Trumbull counties.</p>
+            <div class="area-grid">
+                <div class="area-pill">Youngstown</div>
+                <div class="area-pill">Boardman</div>
+                <div class="area-pill">Warren</div>
+                <div class="area-pill">Champion Heights</div>
+                <div class="area-pill">Canfield</div>
+                <div class="area-pill">Niles</div>
             </div>
         </div>
     </section>
@@ -456,6 +586,19 @@
                 }
             });
         });
+
+        // 3. BEFORE/AFTER SLIDER LOGIC
+        const sliderInput = document.getElementById('slider-input');
+        const imgAfter = document.getElementById('img-after');
+        const sliderLine = document.getElementById('slider-line');
+
+        if (sliderInput && imgAfter && sliderLine) {
+            sliderInput.addEventListener('input', (e) => {
+                const sliderValue = e.target.value;
+                imgAfter.style.clipPath = `polygon(0 0, ${sliderValue}% 0, ${sliderValue}% 100%, 0 100%)`;
+                sliderLine.style.left = `${sliderValue}%`;
+            });
+        }
     </script>
 </body>
 </html>
