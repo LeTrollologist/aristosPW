@@ -6,6 +6,11 @@
     <meta name="description" content="Aristos Property Works provides high-end residential and commercial property maintenance, specializing in technical troubleshooting and system repairs.">
     <title>Aristos Property Works | Premium Technical Solutions & Maintenance</title>
     
+    <!-- Premium Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
     <!-- INVISIBLE LOCAL SEO SCHEMA (JSON-LD) -->
     <script type="application/ld+json">
     {
@@ -64,28 +69,52 @@
         }
         
         body {
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-family: 'Outfit', 'Helvetica Neue', Helvetica, Arial, sans-serif;
             margin: 0;
             padding: 0;
             color: var(--text-main);
             background-color: var(--bg-main);
             line-height: 1.6;
             scroll-behavior: smooth;
-            transition: background-color 0.3s, color 0.3s;
+            transition: background-color 0.5s ease, color 0.5s ease;
+            overflow-x: hidden;
         }
+
+        /* REVEAL ANIMATIONS */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* DELAYS FOR STAGGERED REVEALS */
+        .delay-1 { transition-delay: 0.1s; }
+        .delay-2 { transition-delay: 0.2s; }
+        .delay-3 { transition-delay: 0.3s; }
 
         /* HEADER & TOGGLE */
         header {
-            background-color: var(--header-bg);
+            background-color: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             padding: 15px 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 30px rgba(0,0,0,0.05);
             position: sticky;
             top: 0;
-            z-index: 100;
-            transition: background-color 0.3s;
+            z-index: 1000;
+            transition: background-color 0.3s, border-bottom 0.3s;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        [data-theme="dark"] header {
+            background-color: rgba(18, 18, 18, 0.85);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
         }
         
         .logo-container { width: 220px; }
@@ -109,31 +138,68 @@
         .theme-toggle:hover { transform: scale(1.1); }
 
         .btn {
-            background-color: var(--gold);
-            color: #00234E; /* Keep text dark on the gold button */
-            padding: 12px 24px;
+            background: linear-gradient(135deg, var(--gold) 0%, #a88748 100%);
+            color: #00234E;
+            padding: 14px 28px;
             text-decoration: none;
-            font-weight: bold;
-            border-radius: 4px;
-            transition: background 0.3s;
+            font-weight: 800;
+            border-radius: 8px;
+            transition: all 0.3s ease;
             cursor: pointer;
             border: none;
             font-size: 1rem;
+            box-shadow: 0 4px 15px rgba(197, 160, 89, 0.3);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
         }
-        .btn:hover { background-color: #a88748; }
+        .btn::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(255,255,255,0.2);
+            z-index: -1;
+            transform: scaleY(0);
+            transform-origin: bottom;
+            transition: transform 0.3s ease;
+        }
+        .btn:hover {
+            box-shadow: 0 6px 20px rgba(197, 160, 89, 0.5);
+            transform: translateY(-2px);
+        }
+        .btn:hover::after {
+            transform: scaleY(1);
+        }
 
         /* HERO SECTION */
         .hero {
-            background-color: var(--navy-accent);
-            color: #FFFFFF; /* Always white text on hero */
-            padding: 80px 5%;
+            position: relative;
+            background: radial-gradient(circle at center, var(--navy-accent) 0%, #001530 100%);
+            color: #FFFFFF;
+            padding: 100px 5%;
             text-align: center;
-            transition: background-color 0.3s;
+            transition: background 0.5s ease;
+            overflow: hidden;
         }
-        .hero h1 { font-size: 3rem; margin-bottom: 20px; color: #FFFFFF; }
+        [data-theme="dark"] .hero {
+            background: radial-gradient(circle at center, #0B192C 0%, #050a12 100%);
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%; width: 200%; height: 200%;
+            background: radial-gradient(circle, rgba(197, 160, 89, 0.05) 0%, transparent 60%);
+            animation: heroGlow 15s infinite linear;
+            pointer-events: none;
+        }
+        @keyframes heroGlow {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .hero h1 { font-size: 3.5rem; margin-bottom: 20px; color: #FFFFFF; line-height: 1.1; font-weight: 800; }
         .hero span { color: var(--gold); }
         .hero p {
-            font-size: 1.2rem;
+            font-size: 1.25rem;
             max-width: 700px;
             margin: 0 auto 40px auto;
             color: #E2E8F0;
@@ -174,14 +240,21 @@
             gap: 30px;
         }
         .service-card {
-            background: var(--card-bg);
+            background: rgba(var(--card-bg), 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             padding: 40px;
-            border-radius: 8px;
+            border-radius: 12px;
             width: 300px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
             border-top: 5px solid var(--gold);
             text-align: left;
-            transition: background-color 0.3s;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.12);
         }
         .service-card h3 { color: var(--text-headers); margin-top: 0; }
         .service-card p { color: var(--text-main); font-size: 0.95rem; opacity: 0.9; }
@@ -240,26 +313,39 @@
             font-style: italic;
         }
         .smart-form {
-            background: var(--card-bg);
-            padding: 30px;
-            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            padding: 40px;
+            border-radius: 16px;
             width: 100%;
             max-width: 400px;
             color: var(--text-main);
             transition: background-color 0.3s;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+            border: 1px solid rgba(255,255,255,0.1);
         }
-        .smart-form h3 { margin-top: 0; color: var(--text-headers); }
-        .form-group { margin-bottom: 15px; }
-        .form-group label { display: block; font-size: 0.9rem; font-weight: bold; margin-bottom: 5px; color: var(--text-main); opacity: 0.9;}
+        [data-theme="dark"] .smart-form {
+            background: rgba(36, 36, 36, 0.8);
+        }
+        .smart-form h3 { margin-top: 0; color: var(--text-headers); font-size: 1.5rem; }
+        .form-group { margin-bottom: 20px; position: relative; }
+        .form-group label { display: block; font-size: 0.9rem; font-weight: 600; margin-bottom: 8px; color: var(--text-main); opacity: 0.9;}
         .form-group input, .form-group select, .form-group textarea {
             width: 100%;
-            padding: 10px;
+            padding: 12px 15px;
             background-color: var(--bg-main);
             color: var(--text-main);
-            border: 1px solid var(--form-border);
-            border-radius: 4px;
+            border: 2px solid var(--form-border);
+            border-radius: 8px;
             box-sizing: border-box;
             font-family: inherit;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: 0 0 0 3px rgba(197, 160, 89, 0.2);
         }
         .smart-form .btn { width: 100%; margin-top: 10px; }
 
@@ -599,6 +685,40 @@
                 sliderLine.style.left = `${sliderValue}%`;
             });
         }
+
+        // 4. INTERSECTION OBSERVER FOR SCROLL ANIMATIONS
+        const revealElements = document.querySelectorAll(
+            '.hero h1, .hero p, .hero .btn, .trusted-banner, .services h2, .service-card, .process-section h2, .step, .portfolio h2, .slider-container, .area-wrapper, .faq-item, .contact-info, .smart-form'
+        );
+
+        // Add stagger delays based on element types
+        document.querySelectorAll('.service-card').forEach((el, index) => { el.classList.add(`delay-${index + 1}`); });
+        document.querySelectorAll('.step').forEach((el, index) => { el.classList.add(`delay-${index + 1}`); });
+        document.querySelectorAll('.faq-item').forEach((el, index) => { el.classList.add(`delay-${(index % 3) + 1}`); });
+
+        revealElements.forEach((el) => {
+            el.classList.add('reveal');
+        });
+
+        const revealOptions = {
+            threshold: 0.15,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const revealOnScroll = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) {
+                    return;
+                } else {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, revealOptions);
+
+        revealElements.forEach(el => {
+            revealOnScroll.observe(el);
+        });
     </script>
 </body>
 </html>
